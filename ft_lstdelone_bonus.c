@@ -1,42 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acollon <acollon@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/12 15:27:32 by acollon           #+#    #+#             */
-/*   Updated: 2025/04/12 15:35:57 by acollon          ###   ########.fr       */
+/*   Created: 2025/04/19 15:21:26 by acollon           #+#    #+#             */
+/*   Updated: 2025/04/19 15:21:27 by acollon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	size_t				i;
-	const unsigned char	*str1;
-	const unsigned char	*str2;
-
-	i = 0;
-	str1 = (const unsigned char *)s1;
-	str2 = (const unsigned char *)s2;
-	while (i < n)
-	{
-		if (str1[i] != str2[i])
-			return (str1[i] - str2[i]);
-		i++;
-	}
-	return (0);
+	if (!lst || !del)
+		return ;
+	del(lst->content);
+	free(lst);
 }
 /*
 #include <stdio.h>
+#include <string.h>
 
-int     main()
+void	del_content(void *content)
 {
-char    s1[] = "abc";
-char    s2[] = "abc";
+	printf("Suppression du contenu : %s\n", (char *)content);
+	free(content);
+}
 
-printf("%d\n", ft_memcmp(s1, s2, 7));
-return (0);
-}*/
+int	main(void)
+{
+	t_list	*node = ft_lstnew(strdup("À supprimer"));
+
+	ft_lstdelone(node, del_content);
+
+	// À ce stade, node est free (mais on ne touche pas à node->next ici)
+
+	return (0);
+}
+*/

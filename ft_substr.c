@@ -15,17 +15,23 @@
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
+	size_t	s_len;
+	size_t	sub_len;
 	char	*substr;
 
 	i = 0;
+	s_len = ft_strlen(s);
 	if (!s)
 		return (NULL);
-	if (start >= ft_strlen(s))
+	if (start >= s_len)
 		return (ft_strdup(""));
-	substr = malloc(sizeof(char) * len + 1);
+	sub_len = s_len - start;
+	if (sub_len > len)
+		sub_len = len;
+	substr = malloc(sizeof(char) * (sub_len + 1));
 	if (!substr)
 		return (NULL);
-	while (s[start + i] != '\0' && i < len)
+	while (i < sub_len)
 	{
 		substr[i] = s[start + i];
 		i++;
@@ -35,11 +41,11 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 }
 /*
 #include <stdio.h>
+#include <stdint.h>
 
 int	main()
 {
-	char *str = "Hello World";
-
-	printf("Substring : %s\n", ft_substr(str, 15, 15));
+	printf("Substring : %s\n", ft_substr("hola", 0, SIZE_MAX));
 	return (0);
-}*/
+}
+*/

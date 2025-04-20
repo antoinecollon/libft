@@ -10,34 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdlib.h>
-
+#include "libft.h"
+/*
 char	to_upper_if_even(unsigned int i, char c)
 {
 	if (i % 2 == 0 && c >= 'a' && c <= 'z')
 		return (c - 32);
 	return (c);
 }
-
-static int	ft_strlen(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
+*/
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char					*str;
 	unsigned int			i;
 
+	i = 0;
 	if (!s || !f)
 		return (NULL);
-	str = malloc(sizeof(char) * ft_strlen(s));
+	str = malloc(sizeof(char) * ft_strlen(s) + 1);
 	if (!str)
 		return (NULL);
 	while (s[i])
@@ -53,7 +43,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 
 int main(void)
 {
-char *str = "hello world!";
+char *str = "";
 char *result = ft_strmapi(str, to_upper_if_even);
 
 printf("Original: %s\n", str);

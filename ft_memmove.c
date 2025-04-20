@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
@@ -29,7 +29,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	else
 	{
 		while (n--)
-			dst[n - 1] = sc[n - 1];
+			dst[n] = sc[n];
 	}
 	return (dest);
 }

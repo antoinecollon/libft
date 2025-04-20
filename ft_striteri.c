@@ -9,6 +9,9 @@
 /*   Updated: 2025/04/17 15:43:04 by acollon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
+
 /*
 static void	to_upper_if_even(unsigned int i, char *c)
 {

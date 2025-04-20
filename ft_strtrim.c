@@ -10,60 +10,32 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-int	ft_strchr(const char *str, char c)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == c)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	ft_trimmed_len(char const *s1, char const *set)
-{
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	while (s1[i])
-	{
-		if (ft_strchr(set, s1[i]))
-			count++;
-		i++;
-	}
-	return (count);
-}
+#include "libft.h"
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*trimmed;
 	int		i;
-	int		trimmed_len;
-	int		j;
+	int		start;
+	int		end;
 
-	j = 0;
 	i = 0;
-	trimmed_len = ft_trimmed_len(s1, set);
-	trimmed = malloc(sizeof(char) * (trimmed_len + 1));
+	start = 0;
+	end = ft_strlen(s1);
+	while (s1[start] && ft_strchr(set, s1[start]))
+		start++;
+	while (end > start && ft_strchr(set, s1[end - 1]))
+		end--;
+	trimmed = malloc(sizeof(char) * (end - start +1));
 	if (!trimmed)
 		return (NULL);
-	while (s1[i])
+	while (start < end)
 	{
-		if (ft_strchr(set, s1[i]) == 0)
-		{
-			trimmed[j] = s1[i];
-			j++;
-		}
+		trimmed[i] = s1[start];
+		start++;
 		i++;
 	}
+	trimmed[i] = '\0';
 	return (trimmed);
 }
 /*
