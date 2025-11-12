@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acollon <acollon@student.s19.be>           +#+  +:+       +#+        */
+/*   By: acollon <acollon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 14:19:13 by acollon           #+#    #+#             */
-/*   Updated: 2025/04/13 18:48:55 by acollon          ###   ########.fr       */
+/*   Updated: 2025/08/15 17:23:17 by acollon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# include "ft_printf/ft_printf.h"
+# include "get_next_line/get_next_line.h"
 
 //PART_1
 int		ft_atoi(const char *nptr);
@@ -41,6 +43,8 @@ char	*ft_strnstr(const char *big, const char *little, size_t len);
 char	*ft_strrchr(const char *s, int c);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
+void	ft_free_split(char **map);
+int		ft_realloc_tab(char ***old, char *new_elem, int *count);
 
 //PART_2
 char	*ft_substr(char const *s, unsigned int start, size_t len);
