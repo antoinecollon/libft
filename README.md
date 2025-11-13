@@ -2,7 +2,7 @@
 
 ## Overview  
 **Libft** is the very first project of the 42 common core.  
-It consists of a **static C library** that reimplements a some part of the standard C library.  
+It consists of a **static C library** that reimplements some part of the standard C library.  
 The main goal of this project is to help students understand how those standard functions work internally and to develop good habits for memory management and clean code.  
 
 ---
